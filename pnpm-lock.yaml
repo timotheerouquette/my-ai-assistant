@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   ai:
-    specifier: ^3.0.19
-    version: 3.0.19(react@18.2.0)(solid-js@1.8.15)(svelte@4.2.11)(vue@3.4.19)(zod@3.22.4)
+    specifier: ^3.0.28
+    version: 3.0.28(react@18.2.0)(solid-js@1.8.15)(svelte@4.2.11)(vue@3.4.19)(zod@3.22.4)
   next:
     specifier: 14.1.0
     version: 14.1.0(react-dom@18.2.0)(react@18.2.0)
@@ -56,6 +56,29 @@ packages:
     resolution: {integrity: sha512-1Yjs2SvM8TflER/OD3cOjhWWOZb58A2t7wpE2S9XfBYTiIl+XFhQG2bjy4Pu1I+EAlCNUzRDYDdFwFYUKvXcIA==}
     engines: {node: '>=0.10.0'}
     dev: true
+
+  /@ai-sdk/provider-utils@0.0.3(zod@3.22.4):
+    resolution: {integrity: sha512-13+4v62ylduGvwz8966SdnT1aoQRO4QkWzZJyVswdgmYeX2vrXuU4bssK578+FXIXc1jwi2hLZO8lqgLPT/xDA==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      zod: ^3.0.0
+    peerDependenciesMeta:
+      zod:
+        optional: true
+    dependencies:
+      '@ai-sdk/provider': 0.0.2
+      eventsource-parser: 1.1.2
+      nanoid: 3.3.6
+      secure-json-parse: 2.7.0
+      zod: 3.22.4
+    dev: false
+
+  /@ai-sdk/provider@0.0.2:
+    resolution: {integrity: sha512-LDRx7TFWjuuW1V8bGCMvOk4ap5gNGeSxa6w65Y+pHskiLRk/nn+Z2xzMy1JjCTksUblu0i/plai4bOLgqkxJHA==}
+    engines: {node: '>=18'}
+    dependencies:
+      json-schema: 0.4.0
+    dev: false
 
   /@alloc/quick-lru@5.2.0:
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
@@ -335,10 +358,6 @@ packages:
     resolution: {integrity: sha512-/kYRxGDLWzHOB7q+wtSUQlFrtcdUccpfy+X+9iMBpHK8QLLhx2wIPYuS5DYtR9Wa/YlZAbIovy7qVdB1Aq6Lyw==}
     dev: false
 
-  /@types/json-schema@7.0.15:
-    resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
-    dev: false
-
   /@types/json5@0.0.29:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
     dev: true
@@ -551,9 +570,9 @@ packages:
       humanize-ms: 1.2.1
     dev: false
 
-  /ai@3.0.19(react@18.2.0)(solid-js@1.8.15)(svelte@4.2.11)(vue@3.4.19)(zod@3.22.4):
-    resolution: {integrity: sha512-HV0MixfqMrxq2N/gVsEXoNfO9e0mWkgv7zdUH6UvdtI53Qd0UjoxjH0bwe/TsxoCqnK4gnWaGYiGKZrpy/Ldtw==}
-    engines: {node: '>=14.6'}
+  /ai@3.0.28(react@18.2.0)(solid-js@1.8.15)(svelte@4.2.11)(vue@3.4.19)(zod@3.22.4):
+    resolution: {integrity: sha512-Sv3JBe5ouWdEO3vVwttXBkyH1S3g72OHYhqos1Aeaei2PAFsVKPKMu1D6NMWnjAVk/D7jgvzybXBSw42i2Sgiw==}
+    engines: {node: '>=18'}
     peerDependencies:
       react: ^18.2.0
       solid-js: ^1.7.7
@@ -572,7 +591,8 @@ packages:
       zod:
         optional: true
     dependencies:
-      '@types/json-schema': 7.0.15
+      '@ai-sdk/provider': 0.0.2
+      '@ai-sdk/provider-utils': 0.0.3(zod@3.22.4)
       eventsource-parser: 1.1.2
       json-schema: 0.4.0
       jsondiffpatch: 0.6.0
