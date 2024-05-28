@@ -12,11 +12,12 @@ const roleToColorMap: Record<Message["role"], string> = {
   function: "blue",
   assistant: "green",
   data: "orange",
+  tool: "purple",
 };
 
 export default function Chat() {
-  const { status, messages, input, submitMessage, handleInputChange } =
-    useAssistant({ api: "/api/assistant" });
+  const {status, messages, input, submitMessage, handleInputChange} =
+    useAssistant({api: "/api/assistant"});
 
   return (
     <div className="flex flex-col w-full max-w-md py-24 mx-auto stretch">
@@ -24,7 +25,7 @@ export default function Chat() {
         <div
           key={m.id}
           className="whitespace-pre-wrap"
-          style={{ color: roleToColorMap[m.role] }}
+          style={{color: roleToColorMap[m.role]}}
         >
           <strong>{`${m.role}: `}</strong>
           {m.role !== "data" && m.content}
