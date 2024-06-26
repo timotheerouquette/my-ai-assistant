@@ -4,6 +4,7 @@ import { Message, useAssistant } from "ai/react";
 import cn from "clsx";
 import Link from "next/link";
 import { Discuss } from "react-loader-spinner";
+import { addBoldnessAndParagraphs } from "../utils";
 
 const questionsList = [
   "Livrez-vous au Royaume-Uni?",
@@ -29,6 +30,7 @@ export default function Chat() {
     setMessages,
     setInput,
   } = useAssistant({ api: "/api/assistant", threadId: undefined });
+  console.log("input:", input);
 
   return (
     <div>
@@ -60,7 +62,13 @@ export default function Chat() {
                 : "bg-red-800 text-white"
             )}
           >
-            {message.role !== "data" && message.content}
+            {message.role !== "data" && (
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: addBoldnessAndParagraphs(message.content),
+                }}
+              />
+            )}
             {message.role === "data" && (
               <>
                 {(message.data as any).description}
@@ -86,16 +94,19 @@ export default function Chat() {
           <div className="fixed bottom-0 w-full max-w-md flex flex-col text-end">
             {messages.length === 0 ? (
               <div className="pb-3">
-                <span className="font-bold">Questions fréquentes :</span>
-                <ul className="h-16 overflow-auto">
+                <div className="font-bold mb-2">Questions fréquentes :</div>
+                <ul>
                   {questionsList.map((question) => (
-                    <li className="cursor-pointer text-gray-500" key={question}>
+                    <li
+                      className="cursor-pointer text-gray-500 mb-1"
+                      key={question}
+                    >
                       <button
                         onClick={(event) => {
                           setInput(question);
+                          submitMessage();
                         }}
-                        type="submit"
-                        className="underline"
+                        className="underline text-end"
                       >
                         {question}
                       </button>
