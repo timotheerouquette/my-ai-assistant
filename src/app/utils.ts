@@ -8,7 +8,7 @@ export function addBoldnessAndParagraphs(text: string): string {
   let paragraphPattern = /(\d+\.)/g;
 
   // Replace method to insert <br/> before each match
-  let result = text.replace(paragraphPattern, "<br/><br/>$1");
+  let result = boldText.replace(paragraphPattern, "<br/><br/>$1");
 
   return result;
 }
